@@ -1,0 +1,8 @@
+# Ignore hidden file
+.*
+
+# OS
+.DS_Store
+
+# Ignore docker folder with all the sensitive information
+docker/

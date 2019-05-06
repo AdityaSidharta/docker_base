@@ -1,0 +1,23 @@
+---
+version: '3'
+
+services:
+  #####
+  python:
+    hostname: python
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./docker/python/config:/usr/app/src/config
+      - ./docker/python/logs:/usr/app/src/logs
+      - ./docker/python/data:/usr/app/src/data
+      - ./docker/python/envs:/usr/app/src/envs
+
+      # For development purposes
+      - ./app:/usr/app/src/app
+    ports:
+      - 1235:1235
+    command:
+          sh -c "bash entrypoint.sh test &&
+                 bash entrypoint.sh start"
